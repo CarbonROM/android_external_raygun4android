@@ -1,0 +1,20 @@
+android_library_import {
+    name: "timber-4.7.1-prebuilt",
+    aars: ["timber-4.7.1.aar"],
+    sdk_version: "current",
+}
+
+java_import {
+    name: "gson-2.8.5-prebuilt",
+    jars: ["gson-2.8.5.jar"],
+}
+
+java_import {
+    name: "okhttp-3.12.3-prebuilt",
+    jars: ["okhttp-3.12.3.jar"],
+}
+
+java_import {
+    name: "okio-1.9.0-prebuilt",
+    jars: ["okio-1.9.0.jar"],
+}
