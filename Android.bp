@@ -1,0 +1,19 @@
+android_library {
+    name: "raygun4android",
+    manifest: "provider/src/main/AndroidManifest.xml",
+    srcs: [
+        "provider/src/main/java/**/*.java",
+        "provider/src/release/java/**/*.java",
+    ],
+    resource_dirs: [
+        "provider/src/main/res",
+    ],
+    static_libs: [
+        "app-compat-annotations",
+    ],
+    min_sdk_version: "16",
+    sdk_version: "current",
+    optimize: {
+        proguard_flags_files: ["provider/proguard-rules.pro"],
+    },
+}
