@@ -9,6 +9,7 @@ android_library {
         "provider/src/main/res",
     ],
     static_libs: [
+        "androidx.core_core",
         "app-compat-annotations",
     ],
     min_sdk_version: "16",
