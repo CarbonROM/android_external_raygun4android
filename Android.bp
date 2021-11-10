@@ -1,9 +1,25 @@
+// Generate Version.java based on the version number from pom.xml.
+genrule {
+    name: "raygun4android_buildconfig.java",
+    srcs: [
+        "provider/src/main/java-templates/com/raygun/raygun4android/BuildConfig.java",
+        "gradle.properties",
+    ],
+    out: ["com/raygun/raygun4android/BuildConfig.java"],
+    cmd: "grep \"VERSION_NAME=\" $(location gradle.properties) | head -1 |" +
+        " sed -e \"s/.*VERSION_NAME=//\" > $(genDir)/version && " +
+        "sed -e \"s/\\$${project.version}/$$(cat $(genDir)/version)/\" " +
+        " $(location provider/src/main/java-templates/com/raygun/raygun4android/BuildConfig.java) " +
+        "> $(out)",
+}
+
 android_library {
     name: "raygun4android",
     manifest: "provider/src/main/AndroidManifest.xml",
     srcs: [
         "provider/src/main/java/**/*.java",
         "provider/src/release/java/**/*.java",
+        ":raygun4android_buildconfig.java",
     ],
     resource_dirs: [
         "provider/src/main/res",
@@ -12,6 +28,7 @@ android_library {
         "androidx.annotation_annotation",
         "androidx.core_core",
         "app-compat-annotations",
+        "jetbrains-annotations",
     ],
     min_sdk_version: "16",
     sdk_version: "current",
