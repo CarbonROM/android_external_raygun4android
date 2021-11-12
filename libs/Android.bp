@@ -15,6 +15,6 @@ java_import {
 }
 
 java_import {
-    name: "okio-1.9.0-prebuilt",
-    jars: ["okio-1.9.0.jar"],
+    name: "okio-2.10.0-prebuilt",
+    jars: ["okio-2.10.0.jar"],
 }
